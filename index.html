@@ -82,7 +82,7 @@
 
                 var adBreak1 = {
                     tag: {
-                        url: 'https://api-test.adportal.ch/player?action=Replay&channelid=rtlnitro&Uniquehandle=sh&originaldatetime=2021-01-24T13:45:00Z&APIKey=C5BFF7F0-B4DF-475E-A331-F737424F013C',
+                        url: 'https://secure.adnxs.com/ptv?id=12808489&cb=244032121560192160&vskippable=1&vplaybackmethod=1&vwidth=965&vheight=543&vcontext=1&vv=3&kw_kvpagetype=player&kw_kvstation=srf2hd&kw_kvgenre=drama-series&kw_tag=serie%2Ctelenovela&gender=m&age=17',
                         type: 'vast'
                     },
                     id: 'Ad1',
@@ -108,7 +108,11 @@
                     "playback": {
                         "muted": true,
                         "autoplay": true
-                    }};
+                    },
+                    "advertising": {
+                        adBreaks: [adBreak1]
+                    }
+                };
 
                 document.querySelector('#scheudle-ad-button').addEventListener('click', loadConfig);
                 document.querySelector('#reset-button').addEventListener('click', removeSchedule);
@@ -191,14 +195,14 @@
                     });
                 }
 
-                (function () {
+                /*(function () {
                     if (isAdblockEnabled) {
                         var blockerWrapperEl = document.getElementById('blocker-wrapper');
                         var blockerInfoEl = document.getElementById('blocker-info');
                         blockerInfoEl.innerHTML = '<b>Ad Blocker detected!</b> Ads may be blocked. Click here to see our server side ad insertion solution to bypass ad blockers.';
                         blockerWrapperEl.style.display = 'block';
                     }
-                })();
+                })();*/
 
 
 
@@ -206,14 +210,14 @@
                 let manifestUrl = document.getElementById('ad-server-url').value;
                 let schedule = document.getElementById('schedule-list').value;
 
-                player.ads.schedule({
+                /*player.ads.schedule({
                     tag: {
                         url: manifestUrl,
                         type: adType
                     },
                     id: 'Ad',
                     position: schedule
-                });
+                });*/
             </script>
         </div>
     </div>
