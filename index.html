@@ -1,40 +1,50 @@
 <script src="https://cdn.bitmovin.com/player/web/8/bitmovinplayer.js"></script>
+<script src="https://cdn.bitmovin.com/player/web/8/bitmovinplayer-ui.js"></script>
 <link rel="stylesheet" href="https://cdn.bitmovin.com/player/web/8/bitmovinplayer-ui.css">
-
-<div>
-    <script>
-        var adBreak1 = {
-            tag: {
-                url: 'https://api-test.adportal.ch/player?action=Replay&channelid=rtlnitro&Uniquehandle=sh&originaldatetime=2021-01-24T13:45:00Z&APIKey=C5BFF7F0-B4DF-475E-A331-F737424F013C',
-                type: 'vast'
-            },
-            id: 'Ad1',
-            position: 'pre',
-            skippableAfter: 10,
-            linearAdUiConfig: {
-                message: 'This ad will end in {remainingTime}',
-                skippableMessage: 'You can skip this ad now.',
-                requestsUi: true
-            },
-        };
-        var source = {
-            "title": "Default Demo Source Config",
-            "dash": "https://bitmovin-a.akamaihd.net/content/MI201109210084_1/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd",
-            "hls": "https://bitmovin-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8",
-            "poster": "https://bitmovin-a.akamaihd.net/content/MI201109210084_1/poster.jpg"
-        };
-        var playerConfig = {
-            "key": "d94cfbfe-829f-4f35-8f98-8b0b1a784647",
-            "playback": {
-                "muted": true,
-                "autoplay": true
-            },
-            "advertising": {
-                adBreaks: [adBreak1]
-            }
-        };
-        var playerContainer = document.getElementById('player-container');
-        var player = new bitmovin.player.Player(playerContainer, playerConfig);
-        player.load(source);
-    </script>
+<div class="row mt-3">
+    <div class="col-md-6 col-sm-12">
+        <div id="player" class="no-frame">
+            <div id="player-container"></div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+        <div id="dynamic-code">
+            <script>
+                var adBreak1 = {
+                    tag: {
+                        url: 'https://api-test.adportal.ch/player?action=Replay&channelid=rtlnitro&Uniquehandle=sh&originaldatetime=2021-01-24T13:45:00Z&APIKey=C5BFF7F0-B4DF-475E-A331-F737424F013C',
+                        type: 'vast'
+                    },
+                    id: 'Ad1',
+                    position: 'pre',
+                    skippableAfter: 10,
+                    linearAdUiConfig: {
+                        message: 'This ad will end in {remainingTime}',
+                        untilSkippableMessage: 'This ad is skippable in {remainingTime}',
+                        skippableMessage: 'You can skip this ad now.',
+                        requestsUi: true
+                    },
+                };
+                var source = {
+                    "title": "Default Demo Source Config",
+                    "dash": "https://bitmovin-a.akamaihd.net/content/MI201109210084_1/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd",
+                    "hls": "https://bitmovin-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8",
+                    "poster": "https://bitmovin-a.akamaihd.net/content/MI201109210084_1/poster.jpg"
+                };
+                var playerConfig = {
+                    "key": "d94cfbfe-829f-4f35-8f98-8b0b1a784647",
+                    "playback": {
+                        "muted": true,
+                        "autoplay": true
+                    },
+                    "advertising": {
+                        adBreaks: [adBreak1]
+                    }
+                };
+                var playerContainer = document.getElementById('player-container');
+                var player = new bitmovin.player.Player(playerContainer, playerConfig);
+                player.load(source);
+            </script>
+        </div>
+    </div>
 </div>
